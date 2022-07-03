@@ -1,0 +1,255 @@
+html {
+    --margine-main: 40px;
+    --inaltime-buton: 2.5em;
+    --dim-text: 17px;
+    --inaltime-meniu: 60px;
+    font-size: var(--dim-text);
+}
+
+body {
+    --backgr-pagina: #23FC73;
+    --culoare-buton: bisque;
+    --culoare-buton-selectat: rgb(255, 168, 248);
+    --culoare-border: #1D438A;
+    --mod-afisare-pagina: grid;
+    --text-color: #519692;
+    background-color: var(--backgr-pagina);
+}
+
+main {
+    background-color: var(--backgr-pagina);
+    margin-left: 20px;
+    margin-right: 20px;
+    color: black;
+}
+
+section {
+    border: 1px solid #519692;
+    padding: 50px;
+}
+
+#container {
+    display: grid;
+    grid-template-areas: "z-acasa  z-galerie" "z-produse z-info";
+    grid-template-columns: 1fr 1fr;
+    background-color: #08C9BC;
+    color: black;
+}
+
+#container>:nth-child(1) {
+    grid-area: z-acasa;
+}
+
+#container>:nth-child(3) {
+    grid-area: z-galerie;
+}
+
+#produse {
+    grid-area: z-produse;
+}
+
+#info {
+    grid-area: z-info;
+    font-size: 20px;
+}
+
+iframe,
+img {
+    width: 70%;
+    padding: 30px;
+}
+
+ul.meniu {
+    display: flex;
+    border: 1px solid black;
+    background-color: #FD6399;
+}
+
+ul.submeniu {
+    border: 1px solid black;
+}
+
+ul.submeniu a {
+    display: block;
+    text-align: center;
+    background-color: #FD6399;
+}
+
+header {
+    margin-left: var(--margine-main);
+    margin-right: var(--margine-main);
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul.meniu li {
+    list-style-type: none;
+    border: var(--dim-border-meniu) solid black;
+    height: var(--inaltime-meniu);
+    width: 100px;
+    background-color: var(--culoare-nav);
+    text-align: center;
+    line-height: 30px;
+    /* box-sizing:border-box; */
+    overflow: hidden;
+    transition: font-size 0.7s linear, background-color 0.3s linear;
+    transition-delay: 0s, 0.3s;
+}
+
+ul.meniu li ul.submeniu li a:hover {
+    overflow: visible;
+    font-size: 22px;
+    background-color: #C908AD;
+}
+
+
+/*  */
+
+ul.meniu>li:hover {
+    overflow: visible;
+}
+
+ul.meniu>li {
+    font-size: var(--dim-text);
+}
+
+ul.meniu>li:hover>ul>li {
+    font-size: 22px;
+    background-color: #C908AD;
+}
+
+ul.meniu li:hover {
+    transform: scale( 1.2, 1.2);
+    font-size: 22px;
+    background-color: #C908AD;
+}
+
+ul.meniu ul {
+    position: sticky;
+    right: var(--dim-border-meniu);
+}
+
+ul.meniu a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+ul.meniu ul li a:hover {
+    animation: animatie_submeniu 1s 1 linear;
+}
+
+
+/******************************************/
+
+#chk-meniu,
+#img_meniu {
+    display: none;
+}
+
+@media screen and (max-width:750px) {
+    body {
+        font-size: 1rem;
+    }
+    #container {
+        grid-template-areas: "z-acasa " "z-galerie" "z-produse" "z-info";
+        grid-template-columns: 1fr;
+    }
+    nav {
+        height: 50%;
+    }
+    ul.meniu {
+        display: none;
+        transform-origin: center top;
+    }
+    ul.meniu li {
+        width: 100%;
+    }
+    #chk-meniu:checked~ul.meniu {
+        display: block;
+        animation: animatie_meniu 0.7s 1 linear;
+    }
+    ul.meniu ul li {
+        background-color: #FD6399;
+    }
+    #img_meniu {
+        height: 40px;
+        width: auto;
+        display: inline-block;
+    }
+}
+
+#back {
+    text-decoration: none;
+}
+
+@keyframes animatie_submeniu {
+    0% {
+        transform: scale(1.5, 1.5);
+        background-color: rgb(87, 21, 35);
+        font-size: 17px;
+    }
+    50% {
+        transform: scale(1.2, 1.2);
+        transform: rotate(15deg);
+        font-size: 17px;
+    }
+    75% {
+        transform: scale(1.2, 1.2);
+        transform: rotate(-15deg);
+        font-size: 17px;
+    }
+    100% {
+        transform: scale(1.1, 1.1);
+    }
+}
+
+@keyframes animatie_meniu {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+.oferte {
+    color: red;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.imagini {
+    padding: 30px;
+}
+
+
+/********18.03********/
+
+#container {
+    counter-reset: nrsectiuni;
+}
+
+#container>section>h2::before {
+    counter-increment: nrsectiuni;
+    content: "Titlu: " counter(nrsectiuni, upper-roman) ") ";
+}
+
+#pagina {
+    text-align: center;
+    color: #C908AD;
+}
+
+.verde {
+    font-weight: bold;
+}
+
+.margini {
+    border: solid 5px rgb(101, 7, 7);
+}

@@ -1,0 +1,58 @@
+    body {
+        font-size: 1rem;
+    }
+    
+    ul.meniu li a:hover {
+        animation: anim_mic;
+    }
+    
+    #container {
+        grid-template-areas: "z-salut" "z-orar" "z-promotii" "z-imagine" "z-prezentare";
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        height: 50%;
+    }
+    
+    ul.meniu {
+        display: none;
+        transform-origin: center top;
+    }
+    
+    ul.meniu li {
+        width: 100%;
+    }
+    
+    #chk-meniu:checked~ul.meniu {
+        display: block;
+        animation: animatie_meniu 0.7s 1 linear;
+    }
+    
+    ul.meniu ul li {
+        background-color: blue;
+    }
+    
+    #img_meniu {
+        height: 40px;
+        width: auto;
+        display: inline-block;
+    }
+    
+    @keyframes animatie_meniu {
+        0% {
+            transform: scaleY(0);
+        }
+        100% {
+            transform: scaleY(1);
+        }
+    }
+    
+    @keyframes anim_mic {
+        0% {
+            transform: scale(1.1, 1.1);
+        }
+        100% {
+            transform: scale(1, 1);
+        }
+    }
